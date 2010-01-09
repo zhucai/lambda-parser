@@ -1,0 +1,5 @@
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\bin\Release\Zhucai.CodeParser.dll
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\bin\Release\Zhucai.CodeParser.pdb
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\obj\Release\ResolveAssemblyReference.cache
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\obj\Release\Zhucai.CodeParser.dll
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\obj\Release\Zhucai.CodeParser.pdb

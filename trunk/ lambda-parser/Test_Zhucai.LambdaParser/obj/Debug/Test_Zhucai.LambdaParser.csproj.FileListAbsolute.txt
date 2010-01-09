@@ -1,0 +1,14 @@
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\obj\Debug\ResolveAssemblyReference.cache
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.pdb
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.dll
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.pdb
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\obj\Debug\Test_Zhucai.LambdaParser.dll
+E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\obj\Debug\Test_Zhucai.LambdaParser.pdb
+F:\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll
+F:\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.pdb
+F:\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.dll
+F:\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.pdb
+F:\LambdaParser\Test_Zhucai.LambdaParser\obj\Debug\ResolveAssemblyReference.cache
+F:\LambdaParser\Test_Zhucai.LambdaParser\obj\Debug\Test_Zhucai.LambdaParser.dll
+F:\LambdaParser\Test_Zhucai.LambdaParser\obj\Debug\Test_Zhucai.LambdaParser.pdb

@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="824e1115-94d6-4a4d-8c32-72cfc45cb423" name="zhucai@ZHUCAI-PC 2009-06-09 23:30:46" runUser="zhucai-PC\zhucai" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Default Run Configuration" id="069a2be6-7e03-4d43-8a94-96180f3924df">
+    <Deployment runDeploymentRoot="E:\svn\lambdaparser\LambdaParser\TestResults\zhucai_ZHUCAI-PC 2009-06-09 23_30_46">
+      <DeploymentItem filename="E:\svn\lambdaparser\LambdaParser\Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.dll" />
+    </Deployment>
+    <Hosts skipUnhostableTests="false" />
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Completed">
+    <Counters total="30" executed="30" passed="30" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2009-06-09T23:30:46.4824218+08:00" queuing="2009-06-09T23:30:53.4433593+08:00" start="2009-06-09T23:30:54.1455078+08:00" finish="2009-06-09T23:30:56.6513671+08:00" />
+  <TestDefinitions>
+    <UnitTest name="ParseDelegateTest_OperatorAndAlso" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="a4521ecc-80f1-7e9f-fc94-9ecea46d77a7">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="6397b38c-5310-46ae-bd30-882ec5553c20" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorAndAlso" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_Other" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="e40092ec-1666-5813-1465-57ded5ae5d9f">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="76885a9b-9aec-4359-a20a-bd5dfe7f8dcf" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_Other" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorAnd" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="35601cf4-55e9-2a46-2798-7e5080b71c58">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="25ec2db3-131d-4b51-9d02-8e012fd8ac1e" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorAnd" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_ArrayMultiRank" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="14b83ec5-07cb-94f3-73d8-1f5301331fcd">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="39c9d5f0-b9f0-4999-a33f-5e4474b96e88" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_ArrayMultiRank" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_StringAdd" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="1983b5cb-f456-910d-196f-ae3c375de9fa">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="176f9362-a924-465c-9ceb-8eb04a22d3e1" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_StringAdd" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorIs" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="614ba8e4-bac9-1a5b-5428-4afb5dc1277b">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="f4794489-146c-42a3-92ec-5e1228a8b98f" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorIs" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_Array" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="8385f542-961c-d8b5-47f8-ecd5bfcb50dd">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="16322c50-cf89-4bc5-acab-4d173c414455" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_Array" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorExclusiveOr" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="b4bbdcb0-6a72-e740-ffa3-91840ccdac33">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a2c89713-370f-4c06-b166-8832f67a63eb" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorExclusiveOr" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorBitShift" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="aea69126-3692-e43c-7a1e-75e2a7d9d34d">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="75886e97-80e9-41ad-91b4-4178fa05657c" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorBitShift" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorNotEqual" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="b0467d72-b2a9-e7e8-00f1-a9d18d735f39">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="3ef36d45-72ef-4de2-8b18-4531119450e3" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorNotEqual" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_Indexer" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="e9ffd3e1-ec23-d727-ec5a-ccb3cbe5dcd0">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="c1551104-4aa7-47f4-a622-4bceb608db94" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_Indexer" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorAs" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="83e406f7-7434-0ccc-3606-9d259c97a0d2">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e0f83006-5cae-47fb-aa1d-89b0657b285c" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorAs" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorConvert" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="5c2a880b-06e3-2fbe-9321-9868fe84f583">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="30fba27d-caf3-4636-b5e5-8ff816b1f8d9" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorConvert" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_Member_Method_Ctor" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="098a0fcd-c943-55ef-c311-b1cb3c6728f1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="50b6e49c-bbcf-4c17-998f-2fa19fc2f10b" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_Member_Method_Ctor" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorCondition" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="96d5f01a-6513-53d7-bf45-b619016524a9">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a51b6216-92bd-4ae2-a156-8df12c5d69ba" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorCondition" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorGreaterThan" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="e762edc2-dc2b-69f8-71d2-ea33c13ba839">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="d4765356-a6c7-4a44-9ed0-9da9a0ffb22d" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorGreaterThan" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorBitNot" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="044e6252-efff-d73f-222f-588af7ab9726">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="497c4e2d-0e3a-4b22-abc0-d08fcd80fdbc" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorBitNot" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorOr" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="e3328cb3-bd63-584c-733c-d137e34b0443">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="276230e3-21f5-40a3-995b-eaea4315cea7" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorOr" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorEqual" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="d1ee7b37-6a35-14f2-f301-09c982e7f5e1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="76392f95-2968-4301-bddf-369b49e4aded" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorEqual" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_Number" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="12637310-9cd5-b9b6-3554-9d2c83e725f2">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="7b8677c0-7d0e-4b79-888a-c99acd86d237" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_Number" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_MemberInit" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="7986bd40-4d1d-4a90-3b50-1f728ff8bdf4">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a8c24681-3277-44c9-9058-79bfee86f3af" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_MemberInit" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorDoubleQuestionMark" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="9c025804-cfe7-d29f-724f-882b3c9703ad">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="ae4744ee-a2a4-471b-b9e7-f6484f67c8f6" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorDoubleQuestionMark" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorOrElse" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="8650c452-efbb-fde1-adb2-75d33c84f6e0">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="bd6009ce-7f2f-4071-8ddc-c705d577eebb" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorOrElse" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorLessThan" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="cad1037b-f902-1930-4b48-53d05d6e87ca">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="87bc39a8-690a-4635-abe0-9d5184a07724" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorLessThan" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorLessThanOrEqual" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="57d0350f-0a28-e38d-fcf7-50849bb52c13">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="3fbedd9c-05ad-4a05-8462-25cc4a155f80" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorLessThanOrEqual" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_Array2" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="fda601cd-c781-f302-edf9-6839ea54e781">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="c5abb8bc-3776-4a20-a25e-72d64c0ab592" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_Array2" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorNot" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="5cf4a8cb-3002-5a98-0436-41631b1cc8b0">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="9319c3f1-acaf-4fa5-b762-8fe406fab3b6" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorNot" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorTypeofSizeof" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="5d5553a2-3cc1-7ca3-3487-f4690fb238d4">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="b2fcd574-d2af-4543-aa1e-6ea98820515f" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorTypeofSizeof" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_MultiLambdaParam" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="0053eb09-ae58-2347-f184-d34ae225cd47">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2a1bf81b-b5df-40e9-8f8c-fd8b1918d815" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_MultiLambdaParam" />
+    </UnitTest>
+    <UnitTest name="ParseDelegateTest_OperatorGreaterThanOrEqual" storage="e:\svn\lambdaparser\lambdaparser\test_zhucai.lambdaparser\bin\debug\test_zhucai.lambdaparser.dll" id="477d7851-a215-3b08-f6bd-9ef70408a55b">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a133a2e3-6d42-4692-9872-30ed1e6d1efb" />
+      <TestMethod codeBase="E:\svn\lambdaparser\LambdaParser\Test_Zhucai.LambdaParser\bin\Debug\Test_Zhucai.LambdaParser.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test_Zhucai.LambdaParser.ExpressionParserManagerTest, Test_Zhucai.LambdaParser" name="ParseDelegateTest_OperatorGreaterThanOrEqual" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="12637310-9cd5-b9b6-3554-9d2c83e725f2" executionId="7b8677c0-7d0e-4b79-888a-c99acd86d237" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1983b5cb-f456-910d-196f-ae3c375de9fa" executionId="176f9362-a924-465c-9ceb-8eb04a22d3e1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="098a0fcd-c943-55ef-c311-b1cb3c6728f1" executionId="50b6e49c-bbcf-4c17-998f-2fa19fc2f10b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0053eb09-ae58-2347-f184-d34ae225cd47" executionId="2a1bf81b-b5df-40e9-8f8c-fd8b1918d815" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8385f542-961c-d8b5-47f8-ecd5bfcb50dd" executionId="16322c50-cf89-4bc5-acab-4d173c414455" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fda601cd-c781-f302-edf9-6839ea54e781" executionId="c5abb8bc-3776-4a20-a25e-72d64c0ab592" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14b83ec5-07cb-94f3-73d8-1f5301331fcd" executionId="39c9d5f0-b9f0-4999-a33f-5e4474b96e88" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9ffd3e1-ec23-d727-ec5a-ccb3cbe5dcd0" executionId="c1551104-4aa7-47f4-a622-4bceb608db94" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7986bd40-4d1d-4a90-3b50-1f728ff8bdf4" executionId="a8c24681-3277-44c9-9058-79bfee86f3af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d5553a2-3cc1-7ca3-3487-f4690fb238d4" executionId="b2fcd574-d2af-4543-aa1e-6ea98820515f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5cf4a8cb-3002-5a98-0436-41631b1cc8b0" executionId="9319c3f1-acaf-4fa5-b762-8fe406fab3b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="044e6252-efff-d73f-222f-588af7ab9726" executionId="497c4e2d-0e3a-4b22-abc0-d08fcd80fdbc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c2a880b-06e3-2fbe-9321-9868fe84f583" executionId="30fba27d-caf3-4636-b5e5-8ff816b1f8d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aea69126-3692-e43c-7a1e-75e2a7d9d34d" executionId="75886e97-80e9-41ad-91b4-4178fa05657c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e762edc2-dc2b-69f8-71d2-ea33c13ba839" executionId="d4765356-a6c7-4a44-9ed0-9da9a0ffb22d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cad1037b-f902-1930-4b48-53d05d6e87ca" executionId="87bc39a8-690a-4635-abe0-9d5184a07724" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57d0350f-0a28-e38d-fcf7-50849bb52c13" executionId="3fbedd9c-05ad-4a05-8462-25cc4a155f80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="477d7851-a215-3b08-f6bd-9ef70408a55b" executionId="a133a2e3-6d42-4692-9872-30ed1e6d1efb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1ee7b37-6a35-14f2-f301-09c982e7f5e1" executionId="76392f95-2968-4301-bddf-369b49e4aded" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0467d72-b2a9-e7e8-00f1-a9d18d735f39" executionId="3ef36d45-72ef-4de2-8b18-4531119450e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="614ba8e4-bac9-1a5b-5428-4afb5dc1277b" executionId="f4794489-146c-42a3-92ec-5e1228a8b98f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83e406f7-7434-0ccc-3606-9d259c97a0d2" executionId="e0f83006-5cae-47fb-aa1d-89b0657b285c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4bbdcb0-6a72-e740-ffa3-91840ccdac33" executionId="a2c89713-370f-4c06-b166-8832f67a63eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="35601cf4-55e9-2a46-2798-7e5080b71c58" executionId="25ec2db3-131d-4b51-9d02-8e012fd8ac1e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e3328cb3-bd63-584c-733c-d137e34b0443" executionId="276230e3-21f5-40a3-995b-eaea4315cea7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a4521ecc-80f1-7e9f-fc94-9ecea46d77a7" executionId="6397b38c-5310-46ae-bd30-882ec5553c20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8650c452-efbb-fde1-adb2-75d33c84f6e0" executionId="bd6009ce-7f2f-4071-8ddc-c705d577eebb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="96d5f01a-6513-53d7-bf45-b619016524a9" executionId="a51b6216-92bd-4ae2-a156-8df12c5d69ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9c025804-cfe7-d29f-724f-882b3c9703ad" executionId="ae4744ee-a2a4-471b-b9e7-f6484f67c8f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e40092ec-1666-5813-1465-57ded5ae5d9f" executionId="76885a9b-9aec-4359-a20a-bd5dfe7f8dcf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="7b8677c0-7d0e-4b79-888a-c99acd86d237" testId="12637310-9cd5-b9b6-3554-9d2c83e725f2" testName="ParseDelegateTest_Number" computerName="ZHUCAI-PC" duration="00:00:00.4611457" startTime="2009-06-09T23:30:54.3925781+08:00" endTime="2009-06-09T23:30:55.6552734+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="176f9362-a924-465c-9ceb-8eb04a22d3e1" testId="1983b5cb-f456-910d-196f-ae3c375de9fa" testName="ParseDelegateTest_StringAdd" computerName="ZHUCAI-PC" duration="00:00:00.0081680" startTime="2009-06-09T23:30:55.6728515+08:00" endTime="2009-06-09T23:30:55.6914062+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="50b6e49c-bbcf-4c17-998f-2fa19fc2f10b" testId="098a0fcd-c943-55ef-c311-b1cb3c6728f1" testName="ParseDelegateTest_Member_Method_Ctor" computerName="ZHUCAI-PC" duration="00:00:00.0062379" startTime="2009-06-09T23:30:55.6992187+08:00" endTime="2009-06-09T23:30:55.7148437+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2a1bf81b-b5df-40e9-8f8c-fd8b1918d815" testId="0053eb09-ae58-2347-f184-d34ae225cd47" testName="ParseDelegateTest_MultiLambdaParam" computerName="ZHUCAI-PC" duration="00:00:00.0166239" startTime="2009-06-09T23:30:55.7187500+08:00" endTime="2009-06-09T23:30:55.7412109+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="16322c50-cf89-4bc5-acab-4d173c414455" testId="8385f542-961c-d8b5-47f8-ecd5bfcb50dd" testName="ParseDelegateTest_Array" computerName="ZHUCAI-PC" duration="00:00:00.0032914" startTime="2009-06-09T23:30:55.7597656+08:00" endTime="2009-06-09T23:30:55.7744140+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c5abb8bc-3776-4a20-a25e-72d64c0ab592" testId="fda601cd-c781-f302-edf9-6839ea54e781" testName="ParseDelegateTest_Array2" computerName="ZHUCAI-PC" duration="00:00:00.0016208" startTime="2009-06-09T23:30:55.7841796+08:00" endTime="2009-06-09T23:30:55.7958984+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="39c9d5f0-b9f0-4999-a33f-5e4474b96e88" testId="14b83ec5-07cb-94f3-73d8-1f5301331fcd" testName="ParseDelegateTest_ArrayMultiRank" computerName="ZHUCAI-PC" duration="00:00:00.0014655" startTime="2009-06-09T23:30:55.8037109+08:00" endTime="2009-06-09T23:30:55.8193359+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c1551104-4aa7-47f4-a622-4bceb608db94" testId="e9ffd3e1-ec23-d727-ec5a-ccb3cbe5dcd0" testName="ParseDelegateTest_Indexer" computerName="ZHUCAI-PC" duration="00:00:00.0030425" startTime="2009-06-09T23:30:55.8281250+08:00" endTime="2009-06-09T23:30:55.8417968+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a8c24681-3277-44c9-9058-79bfee86f3af" testId="7986bd40-4d1d-4a90-3b50-1f728ff8bdf4" testName="ParseDelegateTest_MemberInit" computerName="ZHUCAI-PC" duration="00:00:00.0020480" startTime="2009-06-09T23:30:55.8564453+08:00" endTime="2009-06-09T23:30:55.8681640+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b2fcd574-d2af-4543-aa1e-6ea98820515f" testId="5d5553a2-3cc1-7ca3-3487-f4690fb238d4" testName="ParseDelegateTest_OperatorTypeofSizeof" computerName="ZHUCAI-PC" duration="00:00:00.0032654" startTime="2009-06-09T23:30:55.8759765+08:00" endTime="2009-06-09T23:30:55.8916015+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9319c3f1-acaf-4fa5-b762-8fe406fab3b6" testId="5cf4a8cb-3002-5a98-0436-41631b1cc8b0" testName="ParseDelegateTest_OperatorNot" computerName="ZHUCAI-PC" duration="00:00:00.0108653" startTime="2009-06-09T23:30:55.8984375+08:00" endTime="2009-06-09T23:30:55.9511718+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="497c4e2d-0e3a-4b22-abc0-d08fcd80fdbc" testId="044e6252-efff-d73f-222f-588af7ab9726" testName="ParseDelegateTest_OperatorBitNot" computerName="ZHUCAI-PC" duration="00:00:00.0011113" startTime="2009-06-09T23:30:55.9589843+08:00" endTime="2009-06-09T23:30:55.9707031+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="30fba27d-caf3-4636-b5e5-8ff816b1f8d9" testId="5c2a880b-06e3-2fbe-9321-9868fe84f583" testName="ParseDelegateTest_OperatorConvert" computerName="ZHUCAI-PC" duration="00:00:00.0009302" startTime="2009-06-09T23:30:55.9785156+08:00" endTime="2009-06-09T23:30:55.9931640+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="75886e97-80e9-41ad-91b4-4178fa05657c" testId="aea69126-3692-e43c-7a1e-75e2a7d9d34d" testName="ParseDelegateTest_OperatorBitShift" computerName="ZHUCAI-PC" duration="00:00:00.0017144" startTime="2009-06-09T23:30:56.0009765+08:00" endTime="2009-06-09T23:30:56.0126953+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d4765356-a6c7-4a44-9ed0-9da9a0ffb22d" testId="e762edc2-dc2b-69f8-71d2-ea33c13ba839" testName="ParseDelegateTest_OperatorGreaterThan" computerName="ZHUCAI-PC" duration="00:00:00.0030973" startTime="2009-06-09T23:30:56.0205078+08:00" endTime="2009-06-09T23:30:56.0351562+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="87bc39a8-690a-4635-abe0-9d5184a07724" testId="cad1037b-f902-1930-4b48-53d05d6e87ca" testName="ParseDelegateTest_OperatorLessThan" computerName="ZHUCAI-PC" duration="00:00:00.0021209" startTime="2009-06-09T23:30:56.0429687+08:00" endTime="2009-06-09T23:30:56.0595703+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3fbedd9c-05ad-4a05-8462-25cc4a155f80" testId="57d0350f-0a28-e38d-fcf7-50849bb52c13" testName="ParseDelegateTest_OperatorLessThanOrEqual" computerName="ZHUCAI-PC" duration="00:00:00.0022030" startTime="2009-06-09T23:30:56.0683593+08:00" endTime="2009-06-09T23:30:56.0810546+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a133a2e3-6d42-4692-9872-30ed1e6d1efb" testId="477d7851-a215-3b08-f6bd-9ef70408a55b" testName="ParseDelegateTest_OperatorGreaterThanOrEqual" computerName="ZHUCAI-PC" duration="00:00:00.0019438" startTime="2009-06-09T23:30:56.0888671+08:00" endTime="2009-06-09T23:30:56.1025390+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="76392f95-2968-4301-bddf-369b49e4aded" testId="d1ee7b37-6a35-14f2-f301-09c982e7f5e1" testName="ParseDelegateTest_OperatorEqual" computerName="ZHUCAI-PC" duration="00:00:00.0022709" startTime="2009-06-09T23:30:56.1113281+08:00" endTime="2009-06-09T23:30:56.1230468+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3ef36d45-72ef-4de2-8b18-4531119450e3" testId="b0467d72-b2a9-e7e8-00f1-a9d18d735f39" testName="ParseDelegateTest_OperatorNotEqual" computerName="ZHUCAI-PC" duration="00:00:00.0019896" startTime="2009-06-09T23:30:56.1308593+08:00" endTime="2009-06-09T23:30:56.1435546+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f4794489-146c-42a3-92ec-5e1228a8b98f" testId="614ba8e4-bac9-1a5b-5428-4afb5dc1277b" testName="ParseDelegateTest_OperatorIs" computerName="ZHUCAI-PC" duration="00:00:00.0062711" startTime="2009-06-09T23:30:56.1523437+08:00" endTime="2009-06-09T23:30:56.1689453+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e0f83006-5cae-47fb-aa1d-89b0657b285c" testId="83e406f7-7434-0ccc-3606-9d259c97a0d2" testName="ParseDelegateTest_OperatorAs" computerName="ZHUCAI-PC" duration="00:00:00.0034934" startTime="2009-06-09T23:30:56.1757812+08:00" endTime="2009-06-09T23:30:56.2011718+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a2c89713-370f-4c06-b166-8832f67a63eb" testId="b4bbdcb0-6a72-e740-ffa3-91840ccdac33" testName="ParseDelegateTest_OperatorExclusiveOr" computerName="ZHUCAI-PC" duration="00:00:00.0011277" startTime="2009-06-09T23:30:56.2119140+08:00" endTime="2009-06-09T23:30:56.2246093+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="25ec2db3-131d-4b51-9d02-8e012fd8ac1e" testId="35601cf4-55e9-2a46-2798-7e5080b71c58" testName="ParseDelegateTest_OperatorAnd" computerName="ZHUCAI-PC" duration="00:00:00.0009003" startTime="2009-06-09T23:30:56.2324218+08:00" endTime="2009-06-09T23:30:56.2431640+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="276230e3-21f5-40a3-995b-eaea4315cea7" testId="e3328cb3-bd63-584c-733c-d137e34b0443" testName="ParseDelegateTest_OperatorOr" computerName="ZHUCAI-PC" duration="00:00:00.0010342" startTime="2009-06-09T23:30:56.2519531+08:00" endTime="2009-06-09T23:30:56.2626953+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6397b38c-5310-46ae-bd30-882ec5553c20" testId="a4521ecc-80f1-7e9f-fc94-9ecea46d77a7" testName="ParseDelegateTest_OperatorAndAlso" computerName="ZHUCAI-PC" duration="00:00:00.0019379" startTime="2009-06-09T23:30:56.2705078+08:00" endTime="2009-06-09T23:30:56.2822265+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bd6009ce-7f2f-4071-8ddc-c705d577eebb" testId="8650c452-efbb-fde1-adb2-75d33c84f6e0" testName="ParseDelegateTest_OperatorOrElse" computerName="ZHUCAI-PC" duration="00:00:00.0017926" startTime="2009-06-09T23:30:56.2910156+08:00" endTime="2009-06-09T23:30:56.3037109+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a51b6216-92bd-4ae2-a156-8df12c5d69ba" testId="96d5f01a-6513-53d7-bf45-b619016524a9" testName="ParseDelegateTest_OperatorCondition" computerName="ZHUCAI-PC" duration="00:00:00.0015750" startTime="2009-06-09T23:30:56.3115234+08:00" endTime="2009-06-09T23:30:56.3261718+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ae4744ee-a2a4-471b-b9e7-f6484f67c8f6" testId="9c025804-cfe7-d29f-724f-882b3c9703ad" testName="ParseDelegateTest_OperatorDoubleQuestionMark" computerName="ZHUCAI-PC" duration="00:00:00.0037222" startTime="2009-06-09T23:30:56.3339843+08:00" endTime="2009-06-09T23:30:56.3476562+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="76885a9b-9aec-4359-a20a-bd5dfe7f8dcf" testId="e40092ec-1666-5813-1465-57ded5ae5d9f" testName="ParseDelegateTest_Other" computerName="ZHUCAI-PC" duration="00:00:00.0093693" startTime="2009-06-09T23:30:56.3554687+08:00" endTime="2009-06-09T23:30:56.3750000+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

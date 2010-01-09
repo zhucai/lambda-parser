@@ -1,0 +1,10 @@
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\bin\Debug\Zhucai.LambdaParser.dll
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\bin\Debug\Zhucai.LambdaParser.pdb
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\obj\Debug\Zhucai.LambdaParser.dll
+C:\Users\zhucai\Documents\Visual Studio 2008\Projects\Test_ParseLambda\Zhucai.CodeParser\obj\Debug\Zhucai.LambdaParser.pdb
+E:\svn\lambdaparser\LambdaParser\Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.dll
+E:\svn\lambdaparser\LambdaParser\Zhucai.LambdaParser\bin\Debug\Zhucai.LambdaParser.pdb
+E:\svn\lambdaparser\LambdaParser\Zhucai.LambdaParser\obj\Debug\ResolveAssemblyReference.cache
+E:\svn\lambdaparser\LambdaParser\Zhucai.LambdaParser\obj\Debug\Zhucai.LambdaParser.dll
+E:\svn\lambdaparser\LambdaParser\Zhucai.LambdaParser\obj\Debug\Zhucai.LambdaParser.pdb
