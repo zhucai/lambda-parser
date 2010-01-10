@@ -283,9 +283,9 @@ namespace Zhucai.LambdaParser
                     case "typeof":
                         {
                             //string str = GetBracketString(false);
-                            ParseException.Assert(_codeParser.ReadString(), "(", _codeParser.Index);
+                            _codeParser.ReadSymbol("(");
                             Type type = ReadType(null);
-                            ParseException.Assert(_codeParser.ReadString(), ")", _codeParser.Index);
+                            _codeParser.ReadSymbol(")");
 
                             currentExpression = Expression.Constant(type,typeof(Type));
                         }
@@ -318,7 +318,7 @@ namespace Zhucai.LambdaParser
                                     string memberName;
                                     while ((memberName = _codeParser.ReadString()) != "}")
                                     {
-                                        ParseException.Assert(_codeParser.ReadString(), "=", _codeParser.Index);
+                                        _codeParser.ReadSymbol("=");
 
                                         MemberInfo memberInfo = type.GetMember(memberName)[0];
                                         MemberBinding memberBinding = Expression.Bind(memberInfo, ReadExpression(0, wrapStart, out isClosedWrap));
@@ -481,8 +481,7 @@ namespace Zhucai.LambdaParser
                                     #region 静态属性或方法
                                     Type type = ReadType(val);
 
-                                    string strPoint = _codeParser.ReadString();
-                                    ParseException.Assert(strPoint, ".", _codeParser.Index);
+                                    _codeParser.ReadSymbol(".");
                                     string strMember = _codeParser.ReadString();
                                     string strOperator = _codeParser.PeekString();
 
@@ -816,8 +815,8 @@ namespace Zhucai.LambdaParser
                     #region case "is":
                     case "is":
                         {
-                            string str = ReadTypeString();
-                            currentExpression = Expression.TypeIs(currentExpression, GetType(str));
+                            Type t = ReadType(null);
+                            currentExpression = Expression.TypeIs(currentExpression, t);
                         }
                         break;
                     #endregion
@@ -825,8 +824,8 @@ namespace Zhucai.LambdaParser
                     #region case "as":
                     case "as":
                         {
-                            string str = ReadTypeString();
-                            currentExpression = Expression.TypeAs(currentExpression, GetType(str));
+                            Type t = ReadType(null);
+                            currentExpression = Expression.TypeAs(currentExpression, t);
                         }
                         break;
                     #endregion
@@ -880,7 +879,7 @@ namespace Zhucai.LambdaParser
                     case "?":
                         {
                             Expression first = ReadExpression(nextLevel, wrapStart, out isClosedWrap);
-                            ParseException.Assert(_codeParser.ReadString(), ":", _codeParser.Index);
+                            _codeParser.ReadSymbol(":");
                             Expression second = ReadExpression(nextLevel, wrapStart, out isClosedWrap);
                             currentExpression = Expression.Condition(currentExpression, first, second);
                         }
@@ -990,8 +989,7 @@ namespace Zhucai.LambdaParser
             // 读前置括号
             if (!hasReadPre)
             {
-                string startBracket = _codeParser.ReadString();
-                ParseException.Assert(startBracket, startSymbol, _codeParser.Index);
+                _codeParser.ReadSymbol(startSymbol);
             }
 
             // 读参数
@@ -1021,8 +1019,7 @@ namespace Zhucai.LambdaParser
             // 读(
             if (!hasReadPre)
             {
-                string strStart = this._codeParser.ReadString(false);
-                ParseException.Assert(strStart, "(", _codeParser.Index);
+                _codeParser.ReadSymbol("(");
             }
 
             // 读中间内容
@@ -1040,81 +1037,6 @@ namespace Zhucai.LambdaParser
                 sb.Append(str);
             }
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// 读类型字符串
-        /// </summary>
-        /// <returns></returns>
-        private string ReadTypeString()
-        {
-            return ReadType(null).ToString();
-            //StringBuilder sb = new StringBuilder();
-            //string str = this._codeParser.ReadString();
-            //while (true)
-            //{
-            //    sb.Append(str);
-            //    string point = this._codeParser.PeekString();
-            //    if (point == ".")
-            //    {
-            //        this._codeParser.ReadString();
-            //        sb.Append(point);
-            //    }
-            //    else
-            //    {
-            //        break;
-            //    }
-            //}
-            //return sb.ToString();
-        }
-
-        /// <summary>
-        /// 读类型
-        /// </summary>
-        /// <param name="val"></param>
-        /// <returns></returns>
-        private Type ReadType(string val)
-        {
-
-            Type type = null;
-            string strVal;
-            if (string.IsNullOrEmpty(val))
-            {
-                strVal = _codeParser.ReadString();
-            }
-            else
-            {
-                strVal = val;
-            }
-
-            while (type == null)
-            {
-                // 读泛型参数
-                if (_codeParser.PeekString() == "<")
-                {
-                    List<Type> listGenericType = new List<Type>();
-                    _codeParser.ReadString();
-                    string endSymbol;
-                    do
-                    {
-                        listGenericType.Add(ReadType(null));
-                    }
-                    while ((endSymbol = _codeParser.ReadString()) == ",");
-                    ParseException.Assert(endSymbol, ">", _codeParser.Index);
-
-                    strVal += string.Format("`{0}[{1}]", listGenericType.Count,
-                        string.Join(",", listGenericType.Select(m => m.FullName).ToArray()));
-                }
-
-                type = GetType(strVal);
-                if (type == null)
-                {
-                    string str = _codeParser.ReadString();
-                    ParseException.Assert(str, ".", _codeParser.Index);
-                    strVal += str + _codeParser.ReadString();
-                }
-            }
-            return type;
         }
 
         /// <summary>
@@ -1153,6 +1075,64 @@ namespace Zhucai.LambdaParser
                     break;
             }
             return _operatorPriorityLevel[operatorSymbol];
+        }
+
+        /// <summary>
+        /// 读类型
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        private Type ReadType(string val)
+        {
+
+            Type type = null;
+            string strVal;
+            if (string.IsNullOrEmpty(val))
+            {
+                strVal = _codeParser.ReadString();
+            }
+            else
+            {
+                strVal = val;
+            }
+
+            while (type == null)
+            {
+                // 读泛型参数
+                if (_codeParser.PeekString() == "<")
+                {
+                    _codeParser.ReadString();
+                    List<Type> listGenericType = new List<Type>();
+                    while (true)
+                    {
+                        listGenericType.Add(ReadType(null));
+                        if (_codeParser.PeekString() == ",")
+                        {
+                            _codeParser.ReadString();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    _codeParser.ReadSymbol(">");
+
+                    strVal += string.Format("`{0}[{1}]", listGenericType.Count,
+                        string.Join(",", listGenericType.Select(m => m.FullName).ToArray()));
+                }
+
+                type = GetType(strVal);
+                if (type == null)
+                {
+                    bool result = _codeParser.ReadSymbol(".",false);
+                    if (!result)
+                    {
+                        throw new ParseUnfindTypeException(strVal, _codeParser.Index);
+                    }
+                    strVal += "." + _codeParser.ReadString();
+                }
+            }
+            return type;
         }
 
         /// <summary>
@@ -1213,9 +1193,6 @@ namespace Zhucai.LambdaParser
 
                 case "string":
                     return typeof(string);
-
-                default:
-                    break;
             }
 
             // 先当typeName是类的全名

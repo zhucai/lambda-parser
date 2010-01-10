@@ -40,11 +40,34 @@ namespace Zhucai.LambdaParser
         /// <returns></returns>
         public string ReadString(bool isIgnoreWhiteSpace)
         {
-            if (Read(true,isIgnoreWhiteSpace))
+            if (Read(true, isIgnoreWhiteSpace))
             {
                 return this.Content.Substring(this.Index, this.Length);
             }
             return null;
+        }
+
+        public bool ReadSymbol(string symbol)
+        {
+            return ReadSymbol(symbol, true);
+        }
+        public bool ReadSymbol(string symbol, bool throwExceptionIfError)
+        {
+            while (char.IsWhiteSpace(this.Content[this.Index+this.Length]))
+            {
+                this.Length++;
+            }
+            if (throwExceptionIfError)
+            {
+                ParseException.Assert(this.Content.Substring(this.Index + this.Length, symbol.Length), symbol, this.Index);
+            }
+            else if (this.Content.Substring(this.Index + this.Length, symbol.Length) != symbol)
+            {
+                return false;
+            }
+            this.Index += this.Length;
+            this.Length = symbol.Length;
+            return true;
         }
 
         /// <summary>
@@ -72,7 +95,7 @@ namespace Zhucai.LambdaParser
         /// </summary>
         /// <param name="isBuildDefineString">遇到代码中的字符串常量时是否将字符串常量解析到DefineString成员。</param>
         /// <returns></returns>
-        private bool Read(bool isBuildDefineString,bool isIgnoreWhiteSpace)
+        private bool Read(bool isBuildDefineString, bool isIgnoreWhiteSpace)
         {
             this.Index += this.Length;
             this.Length = 1;
@@ -469,7 +492,7 @@ namespace Zhucai.LambdaParser
 
                 default:
                     throw new ParseUnknownException("\\" + chOriginal, Index);
-                    //return '\0';
+                //return '\0';
             }
         }
 

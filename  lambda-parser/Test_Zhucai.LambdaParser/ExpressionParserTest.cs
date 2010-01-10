@@ -128,12 +128,22 @@ namespace Test_Zhucai.LambdaParser
         [TestMethod]
         public void ParseDelegateTest_Generic()
         {
-            string code = "()=>typeof(List<string>).FullName";
-            var expected = typeof(List<string>).FullName;
+            {
+                string code = "()=>typeof(List<string>).FullName";
+                var expected = typeof(List<string>).FullName;
 
-            Func<string> func = ExpressionParser.Compile<Func<string>>(code, "System","System.Collections.Generic");
-            var actual = func();
-            Assert.AreEqual(expected, actual);
+                Func<string> func = ExpressionParser.Compile<Func<string>>(code, "System", "System.Collections.Generic");
+                var actual = func();
+                Assert.AreEqual(expected, actual);
+            }
+            {
+                string code = "()=>typeof(List<List<string>>).FullName";
+                var expected = typeof(List<List<string>>).FullName;
+
+                Func<string> func = ExpressionParser.Compile<Func<string>>(code, "System", "System.Collections.Generic");
+                var actual = func();
+                Assert.AreEqual(expected, actual);
+            }
         }
         /// <summary>
         /// 泛型类
@@ -144,8 +154,8 @@ namespace Test_Zhucai.LambdaParser
             string code = "()=>new List<string>().Count";
             var expected = new List<string>().Count;
 
-            Func<string> func = ExpressionParser.Compile<Func<string>>(code, "System");
-            string actual = func();
+            Func<int> func = ExpressionParser.Compile<Func<int>>(code, "System", "System.Collections.Generic");
+            var actual = func();
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
