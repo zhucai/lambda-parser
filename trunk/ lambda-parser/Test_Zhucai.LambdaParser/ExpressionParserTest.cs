@@ -30,7 +30,7 @@ namespace Test_Zhucai.LambdaParser
             }
             {
                 string code = "()=>1+2-3*4/2+20%7;";
-                int expected = 1+2-3*4/2+20%7;
+                int expected = 1 + 2 - 3 * 4 / 2 + 20 % 7;
 
                 Func<int> func = ExpressionParser.Compile<Func<int>>(code);
                 int actual = func();
@@ -65,8 +65,16 @@ namespace Test_Zhucai.LambdaParser
                 // number+string
                 Func<int, string> f = ExpressionParser.Compile<Func<int, string>>(
                     "m=>2+m.ToString(\"000\")");
-                string result = f(2); // "2002"
-                Assert.AreEqual(result, "2002");
+                string expected = f(2); // "2002"
+                Assert.AreEqual(expected, "2002");
+            }
+            {
+                var expected = ExpressionParser.Compile("(int m)=>-m").DynamicInvoke(10);
+
+                int m = 10;
+                var actual = -m;
+
+                Assert.AreEqual(expected, actual);
             }
         }
         /// <summary>
@@ -115,6 +123,32 @@ namespace Test_Zhucai.LambdaParser
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
+        /// 泛型类
+        /// </summary>
+        [TestMethod]
+        public void ParseDelegateTest_Generic()
+        {
+            string code = "()=>typeof(List<string>).FullName";
+            var expected = typeof(List<string>).FullName;
+
+            Func<string> func = ExpressionParser.Compile<Func<string>>(code, "System","System.Collections.Generic");
+            var actual = func();
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// 泛型类
+        /// </summary>
+        [TestMethod]
+        public void ParseDelegateTest_Generic2()
+        {
+            string code = "()=>new List<string>().Count";
+            var expected = new List<string>().Count;
+
+            Func<string> func = ExpressionParser.Compile<Func<string>>(code, "System");
+            string actual = func();
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
         /// new数组，数组访问
         /// </summary>
         [TestMethod]
@@ -140,6 +174,16 @@ namespace Test_Zhucai.LambdaParser
             int actual = func();
             Assert.AreEqual(expected, actual);
         }
+        //[TestMethod]
+        //public void ParseDelegateTest_ListInit()
+        //{
+        //    string code = "()=>new List<string>().Count";
+        //    var expected = new List<string>().Count;
+
+        //    Func<string> func = ExpressionParser.Compile<Func<string>>(code,"System");
+        //    string actual = func();
+        //    Assert.AreEqual(expected, actual);
+        //}
         /// <summary>
         /// new多维数组
         /// </summary>
@@ -630,7 +674,6 @@ namespace Test_Zhucai.LambdaParser
             // use code to test 2
             expected = "bb";
             actual = func(null);
-
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
