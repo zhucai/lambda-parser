@@ -135,36 +135,13 @@ namespace Zhucai.LambdaParser
         #endregion
 
 
-        #region public method.对外提供的方法
-
-        /// <summary>
-        /// 输出Expression
-        /// </summary>
-        /// <returns></returns>
-        public Expression<TDelegate> ToExpression()
-        {
-            return (Expression<TDelegate>)ToLambdaExpression();
-        }
-
-        /// <summary>
-        /// 直接编译成委托
-        /// </summary>
-        /// <returns></returns>
-        public TDelegate Compile()
-        {
-            return ToExpression().Compile();
-        }
-
-        #endregion
-
-
-        #region private method.内部方法
+        #region method.方法
 
         /// <summary>
         /// 转换成LambdaExpression
         /// </summary>
         /// <returns></returns>
-        internal LambdaExpression ToLambdaExpression()
+        public LambdaExpression ToLambdaExpression()
         {
             // 获取委托的参数类型
             Type type = typeof(TDelegate);
@@ -187,6 +164,8 @@ namespace Zhucai.LambdaParser
                     if (lambdaOperator == "=>")
                     {
                         hasLambdaPre = true;
+
+                        // 解析参数
                         string[] paramsName = bracketContent.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < paramsName.Length; i++)
                         {
@@ -197,7 +176,6 @@ namespace Zhucai.LambdaParser
                             {
                                 paramType = listType != null ? listType[i] : typeof(object);
                                 paramName = paramsName[i];
-                                //this._params.Add(Expression.Parameter(, );
                             }
                             else
                             {
@@ -215,6 +193,7 @@ namespace Zhucai.LambdaParser
             }
             else if (char.IsLetter(val[0]) || val[0] == '_')
             {
+                // 解析参数
                 string lambdaOperator = _codeParser.ReadString();
                 if (lambdaOperator == "=>")
                 {
@@ -223,7 +202,7 @@ namespace Zhucai.LambdaParser
                 }
             }
 
-            // 若没有lambda前置符(如:m=>)，则恢复_parser到初始化
+            // 若没有lambda前置符(如:m=>)，则恢复_parser到初始状态
             if (!hasLambdaPre)
             {
                 _codeParser.RevertPosition();
@@ -268,17 +247,23 @@ namespace Zhucai.LambdaParser
                 // 字母或字符
                 switch (val)
                 {
+                    #region case "null":
                     case "null":
                         currentExpression = Expression.Constant(null);
-                        break;
+                        break; 
+                    #endregion
 
+                    #region case "true":
                     case "true":
                         currentExpression = Expression.Constant(true);
-                        break;
+                        break; 
+                    #endregion
 
+                    #region case "false":
                     case "false":
                         currentExpression = Expression.Constant(false);
-                        break;
+                        break; 
+                    #endregion
 
                     //case "void":
                     //    currentExpression = Expression.Constant(typeof(System.Void));
@@ -297,9 +282,12 @@ namespace Zhucai.LambdaParser
                     #region case "typeof":
                     case "typeof":
                         {
-                            string str = GetBracketString(false);
-                            Type type = GetType(str);
-                            currentExpression = Expression.Constant(type);
+                            //string str = GetBracketString(false);
+                            ParseException.Assert(_codeParser.ReadString(), "(", _codeParser.Index);
+                            Type type = ReadType(null);
+                            ParseException.Assert(_codeParser.ReadString(), ")", _codeParser.Index);
+
+                            currentExpression = Expression.Constant(type,typeof(Type));
                         }
                         break;
                     #endregion
@@ -308,14 +296,7 @@ namespace Zhucai.LambdaParser
                     case "new":
                         {
                             // 获取类型
-                            StringBuilder sb = new StringBuilder();
-                            sb.Append(_codeParser.ReadString());
-                            while (_codeParser.PeekString() == ".")
-                            {
-                                sb.Append(_codeParser.ReadString());
-                                sb.Append(_codeParser.ReadString());
-                            }
-                            Type type = GetType(sb.ToString());
+                            Type type = ReadType(_codeParser.ReadString());
 
                             // 是否数组
                             string bracketStart = _codeParser.ReadString();
@@ -389,21 +370,29 @@ namespace Zhucai.LambdaParser
                         break;
                     #endregion
 
+                    #region case "+":
                     case "+":
                         // 忽略前置+
-                        return ReadExpression(priorityLevel, wrapStart, out isClosedWrap);
+                        return ReadExpression(priorityLevel, wrapStart, out isClosedWrap); 
+                    #endregion
 
+                    #region case "-":
                     case "-":
                         currentExpression = Expression.Negate(ReadExpression(GetOperatorLevel(val, true), wrapStart, out isClosedWrap));
-                        break;
+                        break; 
+                    #endregion
 
+                    #region case "!":
                     case "!":
                         currentExpression = Expression.Not(ReadExpression(GetOperatorLevel(val, true), wrapStart, out isClosedWrap));
-                        break;
+                        break; 
+                    #endregion
 
+                    #region case "~":
                     case "~":
                         currentExpression = Expression.Not(ReadExpression(GetOperatorLevel(val, true), wrapStart, out isClosedWrap));
-                        break;
+                        break; 
+                    #endregion
 
                     #region case "(":
                     case "(":
@@ -457,18 +446,23 @@ namespace Zhucai.LambdaParser
                         }
                     #endregion
 
+                    #region case ".":
                     case ".":
                         {
                             //todo:?
                             //return null;
-                        }
-                        break;
+                            throw new ParseUnknownException(".", this._codeParser.Index);
+                        } 
+                    #endregion
 
+                    #region case ",":
                     case ",":
                         {
                             return ReadExpression(priorityLevel, wrapStart, out isClosedWrap);
-                        }
+                        } 
+                    #endregion
 
+                    #region default:
                     default:
                         {
                             // 头Char是字母或下划线
@@ -485,22 +479,7 @@ namespace Zhucai.LambdaParser
                                 else
                                 {
                                     #region 静态属性或方法
-                                    Type type = null;
-                                    string strVal = val;
-                                    while (true)
-                                    {
-                                        type = GetType(strVal);
-                                        if (type == null)
-                                        {
-                                            string str = _codeParser.ReadString();
-                                            ParseException.Assert(str, ".", _codeParser.Index);
-                                            strVal += str + _codeParser.ReadString();
-                                        }
-                                        else
-                                        {
-                                            break;
-                                        }
-                                    }
+                                    Type type = ReadType(val);
 
                                     string strPoint = _codeParser.ReadString();
                                     ParseException.Assert(strPoint, ".", _codeParser.Index);
@@ -587,16 +566,15 @@ namespace Zhucai.LambdaParser
                                         break;
                                     #endregion
 
-                                    #region default:
                                     default:
                                         {
                                             throw new ParseUnknownException(val, _codeParser.Index);
                                         }
-                                    #endregion
                                 }
                             }
                         }
-                        break;
+                        break; 
+                    #endregion
                 }
             }
             /********************** (End) 第一次读取，一元操作或一个对象 **************************/
@@ -1070,23 +1048,73 @@ namespace Zhucai.LambdaParser
         /// <returns></returns>
         private string ReadTypeString()
         {
-            StringBuilder sb = new StringBuilder();
-            string str = this._codeParser.ReadString();
-            while (true)
+            return ReadType(null).ToString();
+            //StringBuilder sb = new StringBuilder();
+            //string str = this._codeParser.ReadString();
+            //while (true)
+            //{
+            //    sb.Append(str);
+            //    string point = this._codeParser.PeekString();
+            //    if (point == ".")
+            //    {
+            //        this._codeParser.ReadString();
+            //        sb.Append(point);
+            //    }
+            //    else
+            //    {
+            //        break;
+            //    }
+            //}
+            //return sb.ToString();
+        }
+
+        /// <summary>
+        /// 读类型
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        private Type ReadType(string val)
+        {
+
+            Type type = null;
+            string strVal;
+            if (string.IsNullOrEmpty(val))
             {
-                sb.Append(str);
-                string point = this._codeParser.PeekString();
-                if (point == ".")
+                strVal = _codeParser.ReadString();
+            }
+            else
+            {
+                strVal = val;
+            }
+
+            while (type == null)
+            {
+                // 读泛型参数
+                if (_codeParser.PeekString() == "<")
                 {
-                    this._codeParser.ReadString();
-                    sb.Append(point);
+                    List<Type> listGenericType = new List<Type>();
+                    _codeParser.ReadString();
+                    string endSymbol;
+                    do
+                    {
+                        listGenericType.Add(ReadType(null));
+                    }
+                    while ((endSymbol = _codeParser.ReadString()) == ",");
+                    ParseException.Assert(endSymbol, ">", _codeParser.Index);
+
+                    strVal += string.Format("`{0}[{1}]", listGenericType.Count,
+                        string.Join(",", listGenericType.Select(m => m.FullName).ToArray()));
                 }
-                else
+
+                type = GetType(strVal);
+                if (type == null)
                 {
-                    break;
+                    string str = _codeParser.ReadString();
+                    ParseException.Assert(str, ".", _codeParser.Index);
+                    strVal += str + _codeParser.ReadString();
                 }
             }
-            return sb.ToString();
+            return type;
         }
 
         /// <summary>
