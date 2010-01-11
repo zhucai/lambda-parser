@@ -309,30 +309,61 @@ namespace Zhucai.LambdaParser
                                 ConstructorInfo constructor = type.GetConstructor(listParam.ConvertAll<Type>(m => m.Type).ToArray());
                                 currentExpression = Expression.New(constructor, listParam);
 
-                                // 成员初始化
+                                // 成员初始化/集合初始化
                                 if (_codeParser.PeekString() == "{")
                                 {
                                     _codeParser.ReadString();
 
-                                    List<MemberBinding> listMemberBinding = new List<MemberBinding>();
-                                    string memberName;
-                                    while ((memberName = _codeParser.ReadString()) != "}")
+                                    // 测试到底是:成员初始化or集合初始化
+                                    var position = _codeParser.SavePosition();
+                                    string str = _codeParser.ReadString();
+                                    if (str != "}")
                                     {
-                                        _codeParser.ReadSymbol("=");
+                                        bool isMemberInit = (_codeParser.ReadString() == "=");
+                                        _codeParser.RevertPosition(position);
 
-                                        MemberInfo memberInfo = type.GetMember(memberName)[0];
-                                        MemberBinding memberBinding = Expression.Bind(memberInfo, ReadExpression(0, wrapStart, out isClosedWrap));
-                                        listMemberBinding.Add(memberBinding);
-
-                                        // 逗号
-                                        string comma = _codeParser.ReadString();
-                                        if (comma == "}")
+                                        // 成员初始化
+                                        if (isMemberInit)
                                         {
-                                            break;
+                                            List<MemberBinding> listMemberBinding = new List<MemberBinding>();
+                                            string memberName;
+                                            while ((memberName = _codeParser.ReadString()) != "}")
+                                            {
+                                                _codeParser.ReadSymbol("=");
+
+                                                MemberInfo memberInfo = type.GetMember(memberName)[0];
+                                                MemberBinding memberBinding = Expression.Bind(memberInfo, ReadExpression(0, wrapStart, out isClosedWrap));
+                                                listMemberBinding.Add(memberBinding);
+
+                                                // 逗号
+                                                string comma = _codeParser.ReadString();
+                                                if (comma == "}")
+                                                {
+                                                    break;
+                                                }
+                                                ParseException.Assert(comma, ",", _codeParser.Index);
+                                            }
+                                            currentExpression = Expression.MemberInit((NewExpression)currentExpression, listMemberBinding);
                                         }
-                                        ParseException.Assert(comma, ",", _codeParser.Index);
+                                        // 集合初始化
+                                        else
+                                        {
+                                            List<Expression> listExpression = new List<Expression>();
+                                            while (true)
+                                            {
+                                                listExpression.Add(ReadExpression(0, wrapStart, out isClosedWrap));
+
+                                                // 逗号
+                                                string comma = _codeParser.ReadString();
+                                                if (comma == "}")
+                                                {
+                                                    break;
+                                                }
+                                                ParseException.Assert(comma, ",", _codeParser.Index);
+                                            }
+                                            currentExpression = Expression.ListInit((NewExpression)currentExpression, listExpression);
+                                        }
                                     }
-                                    currentExpression = Expression.MemberInit((NewExpression)currentExpression, listMemberBinding);
                                 }
                             }
                             else if (bracketStart == "[")
