@@ -149,14 +149,23 @@ namespace Test_Zhucai.LambdaParser
         /// 泛型类
         /// </summary>
         [TestMethod]
-        public void ParseDelegateTest_Generic2()
+        public void ParseDelegateTest_GenericList()
         {
-            string code = "()=>new List<string>().Count";
-            var expected = new List<string>().Count;
+            {
+                string code = "(m)=>new List<string>(){ Capacity = m * 3 }.Capacity";
+                var expected = new List<string>() { Capacity = 3 * 3 }.Capacity;
 
-            Func<int> func = ExpressionParser.Compile<Func<int>>(code, "System", "System.Collections.Generic");
-            var actual = func();
-            Assert.AreEqual(expected, actual);
+                Func<int, int> func = ExpressionParser.Compile<Func<int, int>>(code, "System", "System.Collections.Generic");
+                var actual = func(3);
+                Assert.AreEqual(expected, actual);
+            }
+            {
+                string code = "()=>new List<string>(){ \"abc\",\"def\" }[1]";
+                var expected = new List<string>(){ "abc","def" }[1];
+
+                var actual = ExpressionParser.Compile(code, "System", "System.Collections.Generic").DynamicInvoke();
+                Assert.AreEqual(expected, actual);
+            }
         }
         /// <summary>
         /// new数组，数组访问
