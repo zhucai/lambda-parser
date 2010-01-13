@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhucai.LambdaParser", "Zhuc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Zhucai.LambdaParser", "Test_Zhucai.LambdaParser\Test_Zhucai.LambdaParser.csproj", "{22888A97-12F6-4AF4-AF61-FB81E29ACE96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{6F6BC27F-9A01-405D-B53E-9B3761324183}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{22888A97-12F6-4AF4-AF61-FB81E29ACE96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22888A97-12F6-4AF4-AF61-FB81E29ACE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22888A97-12F6-4AF4-AF61-FB81E29ACE96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F6BC27F-9A01-405D-B53E-9B3761324183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6BC27F-9A01-405D-B53E-9B3761324183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6BC27F-9A01-405D-B53E-9B3761324183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6BC27F-9A01-405D-B53E-9B3761324183}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
