@@ -17,6 +17,8 @@ namespace Zhucai.LambdaParser
 
         private CodeParser _codeParser;
 
+        private Type _delegateType;
+
         /// <summary>
         /// 存放参数
         /// </summary>
@@ -126,10 +128,18 @@ namespace Zhucai.LambdaParser
         /// 构造Lambda表达式的解析器
         /// </summary>
         /// <param name="code">lambda表达式代码。如：m=>m.ToString()</param>
-        internal ExpressionParserCore(string code)
+        internal ExpressionParserCore(string code,Type delegateType)
         {
             this._codeParser = new CodeParser(code);
             this.Namespaces = new List<string>();
+            if (delegateType != null)
+            {
+                this._delegateType = delegateType;
+            }
+            else
+            {
+                this._delegateType = typeof(TDelegate);
+            }
         }
 
         #endregion
@@ -144,7 +154,7 @@ namespace Zhucai.LambdaParser
         public LambdaExpression ToLambdaExpression()
         {
             // 获取委托的参数类型
-            Type type = typeof(TDelegate);
+            Type type = _delegateType ?? typeof(TDelegate);
             MethodInfo methodInfo = type.GetMethod("Invoke");
             List<Type> listType = null;
             if (methodInfo != null)
@@ -211,7 +221,7 @@ namespace Zhucai.LambdaParser
             bool isCloseWrap;
             Expression expression = ReadExpression(0, null, out isCloseWrap);
 
-            return Expression.Lambda(expression, this._params.ToArray());
+            return Expression.Lambda(_delegateType, expression, this._params.ToArray());
         }
 
         /// <summary>
@@ -524,12 +534,14 @@ namespace Zhucai.LambdaParser
 
                                         if (parameter != null)
                                         {
-                                            MethodInfo methodInfo = parameter.Type.GetMethod(strMember, listParam.ConvertAll<Type>(m => m.Type).ToArray());
+                                            MethodInfo methodInfo = parameter.Type.GetMethod(strMember,
+                                                listParam.ConvertAll<Type>(m => m.Type).ToArray());
                                             currentExpression = Expression.Call(parameter, methodInfo, listParam.ToArray());
                                         }
                                         else
                                         {
-                                            MethodInfo methodInfo = type.GetMethod(strMember, listParam.ConvertAll<Type>(m => m.Type).ToArray());
+                                            MethodInfo methodInfo = type.GetMethod(strMember,BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic,null,
+                                                listParam.ConvertAll<Type>(m => m.Type).ToArray(),null);
                                             currentExpression = Expression.Call(methodInfo, listParam.ToArray());
                                         }
                                     }
