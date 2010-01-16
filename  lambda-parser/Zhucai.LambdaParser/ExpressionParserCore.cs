@@ -19,6 +19,11 @@ namespace Zhucai.LambdaParser
 
         private Type _delegateType;
 
+        private Type _defaultInstanceType;
+        private ParameterExpression _defaultInstanceParam;
+
+        private bool _firstTypeIsDefaultInstance;
+
         /// <summary>
         /// 存放参数
         /// </summary>
@@ -128,9 +133,11 @@ namespace Zhucai.LambdaParser
         /// 构造Lambda表达式的解析器
         /// </summary>
         /// <param name="code">lambda表达式代码。如：m=>m.ToString()</param>
-        internal ExpressionParserCore(string code,Type delegateType)
+        internal ExpressionParserCore(Type delegateType,string code,  Type defaultInstanceType, bool firstTypeIsDefaultInstance)
         {
             this._codeParser = new CodeParser(code);
+            this._defaultInstanceType = defaultInstanceType;
+            this._firstTypeIsDefaultInstance = firstTypeIsDefaultInstance;
             this.Namespaces = new List<string>();
             if (delegateType != null)
             {
@@ -139,6 +146,28 @@ namespace Zhucai.LambdaParser
             else
             {
                 this._delegateType = typeof(TDelegate);
+            }
+
+            // 判断是否有指定具体的委托类型
+            if (firstTypeIsDefaultInstance && this._delegateType.IsSubclassOf(typeof(MulticastDelegate)))
+            {
+                MethodInfo methodInfo = _delegateType.GetMethod("Invoke");
+                if (methodInfo != null)
+                {
+                    ParameterInfo firstParam = methodInfo.GetParameters().FirstOrDefault();
+                    if (firstParam != null)
+                    {
+                        this._defaultInstanceType = firstParam.ParameterType;
+                    }
+                }
+            }
+
+            if (this._defaultInstanceType != null)
+            {
+                _defaultInstanceParam = Expression.Parameter(this._defaultInstanceType, "___DefaultInstanceParam");
+
+                // 添加默认参数
+                this._params.Insert(0, this._defaultInstanceParam);
             }
         }
 
@@ -154,12 +183,17 @@ namespace Zhucai.LambdaParser
         public LambdaExpression ToLambdaExpression()
         {
             // 获取委托的参数类型
-            Type type = _delegateType ?? typeof(TDelegate);
-            MethodInfo methodInfo = type.GetMethod("Invoke");
+            MethodInfo methodInfo = _delegateType.GetMethod("Invoke");
             List<Type> listType = null;
             if (methodInfo != null)
             {
                 listType = methodInfo.GetParameters().ToList().ConvertAll(m => m.ParameterType);
+            }
+
+            int paramIndexPrefix = 0;
+            if (_defaultInstanceType != null)
+            {
+                paramIndexPrefix = 1;
             }
 
             // 检查是否有lambda前置符(如:m=>)
@@ -184,13 +218,13 @@ namespace Zhucai.LambdaParser
                             string paramName;
                             if (typeName.Length == 1)
                             {
-                                paramType = listType != null ? listType[i] : typeof(object);
+                                paramType = listType != null ? listType[i + paramIndexPrefix] : typeof(object);
                                 paramName = paramsName[i];
                             }
                             else
                             {
                                 paramType = GetType(typeName[0]);
-                                if (type == null)
+                                if (paramType == null)
                                 {
                                     throw new ParseUnfindTypeException(typeName[0], this._codeParser.Index);
                                 }
@@ -208,7 +242,7 @@ namespace Zhucai.LambdaParser
                 if (lambdaOperator == "=>")
                 {
                     hasLambdaPre = true;
-                    this._params.Add(Expression.Parameter(listType != null ? listType[0] : typeof(object), val));
+                    this._params.Add(Expression.Parameter(listType != null ? listType[0 + paramIndexPrefix] : typeof(object), val));
                 }
             }
 
@@ -221,7 +255,16 @@ namespace Zhucai.LambdaParser
             bool isCloseWrap;
             Expression expression = ReadExpression(0, null, out isCloseWrap);
 
-            return Expression.Lambda(_delegateType, expression, this._params.ToArray());
+            // 具体的Delegate
+            if (this._delegateType.IsSubclassOf(typeof(MulticastDelegate)))
+            {
+                return Expression.Lambda(_delegateType, expression, this._params.ToArray());
+            }
+            // 不具体的Delegate
+            else
+            {
+                return Expression.Lambda(expression, this._params.ToArray());
+            }
         }
 
         /// <summary>
@@ -260,19 +303,19 @@ namespace Zhucai.LambdaParser
                     #region case "null":
                     case "null":
                         currentExpression = Expression.Constant(null);
-                        break; 
+                        break;
                     #endregion
 
                     #region case "true":
                     case "true":
                         currentExpression = Expression.Constant(true);
-                        break; 
+                        break;
                     #endregion
 
                     #region case "false":
                     case "false":
                         currentExpression = Expression.Constant(false);
-                        break; 
+                        break;
                     #endregion
 
                     //case "void":
@@ -297,7 +340,7 @@ namespace Zhucai.LambdaParser
                             Type type = ReadType(null);
                             _codeParser.ReadSymbol(")");
 
-                            currentExpression = Expression.Constant(type,typeof(Type));
+                            currentExpression = Expression.Constant(type, typeof(Type));
                         }
                         break;
                     #endregion
@@ -414,25 +457,25 @@ namespace Zhucai.LambdaParser
                     #region case "+":
                     case "+":
                         // 忽略前置+
-                        return ReadExpression(priorityLevel, wrapStart, out isClosedWrap); 
+                        return ReadExpression(priorityLevel, wrapStart, out isClosedWrap);
                     #endregion
 
                     #region case "-":
                     case "-":
                         currentExpression = Expression.Negate(ReadExpression(GetOperatorLevel(val, true), wrapStart, out isClosedWrap));
-                        break; 
+                        break;
                     #endregion
 
                     #region case "!":
                     case "!":
                         currentExpression = Expression.Not(ReadExpression(GetOperatorLevel(val, true), wrapStart, out isClosedWrap));
-                        break; 
+                        break;
                     #endregion
 
                     #region case "~":
                     case "~":
                         currentExpression = Expression.Not(ReadExpression(GetOperatorLevel(val, true), wrapStart, out isClosedWrap));
-                        break; 
+                        break;
                     #endregion
 
                     #region case "(":
@@ -493,14 +536,14 @@ namespace Zhucai.LambdaParser
                             //todo:?
                             //return null;
                             throw new ParseUnknownException(".", this._codeParser.Index);
-                        } 
+                        }
                     #endregion
 
                     #region case ",":
                     case ",":
                         {
                             return ReadExpression(priorityLevel, wrapStart, out isClosedWrap);
-                        } 
+                        }
                     #endregion
 
                     #region default:
@@ -509,71 +552,89 @@ namespace Zhucai.LambdaParser
                             // 头Char是字母或下划线
                             if (char.IsLetter(firstChar) || firstChar == '_')
                             {
-                                ParameterExpression parameter;
-                                // 先看是否参数
-                                if ((parameter = this._params.SingleOrDefault(m => m.Name == val))
-                                    != null)
+                                // 默认实例的方法调用
+                                if (_defaultInstanceType != null && _codeParser.PeekString() == "(")
                                 {
-                                    currentExpression = parameter;
+                                    // 获取参数
+                                    List<Expression> listParam = ReadParams("(", false);
+
+                                    MethodInfo methodInfo = _params[0].Type.GetMethod(val,
+                                        listParam.ConvertAll<Type>(m => m.Type).ToArray());
+                                    currentExpression = Expression.Call(_params[0], methodInfo, listParam.ToArray());
                                 }
-                                // 不是参数则当作类型
+                                // 参数 or 类 or  默认实例的属性
                                 else
                                 {
-                                    #region 静态属性或方法
-                                    Type type = ReadType(val);
-
-                                    _codeParser.ReadSymbol(".");
-                                    string strMember = _codeParser.ReadString();
-                                    string strOperator = _codeParser.PeekString();
-
-                                    // 静态方法
-                                    if (strOperator == "(")
+                                    ParameterExpression parameter;
+                                    // 参数
+                                    if ((parameter = this._params.SingleOrDefault(m => m.Name == val))
+                                        != null)
                                     {
-                                        // 获取参数
-                                        List<Expression> listParam = ReadParams(strOperator, false);
-
-                                        if (parameter != null)
-                                        {
-                                            MethodInfo methodInfo = parameter.Type.GetMethod(strMember,
-                                                listParam.ConvertAll<Type>(m => m.Type).ToArray());
-                                            currentExpression = Expression.Call(parameter, methodInfo, listParam.ToArray());
-                                        }
-                                        else
-                                        {
-                                            MethodInfo methodInfo = type.GetMethod(strMember,BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic,null,
-                                                listParam.ConvertAll<Type>(m => m.Type).ToArray(),null);
-                                            currentExpression = Expression.Call(methodInfo, listParam.ToArray());
-                                        }
+                                        currentExpression = parameter;
                                     }
-                                    // 静态成员(PropertyOrField)
+                                    // 默认实例的属性
+                                    else if (this._defaultInstanceType != null &&
+                                        (this._defaultInstanceType.GetProperty(val) != null
+                                            || this._defaultInstanceType.GetField(val) != null))
+                                    {
+                                        currentExpression = Expression.PropertyOrField(_params[0], val);
+                                    }
+                                    // 类
                                     else
                                     {
-                                        if (parameter != null)
+                                        Type type = ReadType(val);
+
+                                        _codeParser.ReadSymbol(".");
+                                        string strMember = _codeParser.ReadString();
+                                        string strOperator = _codeParser.PeekString();
+
+                                        // 静态方法
+                                        if (strOperator == "(")
                                         {
-                                            currentExpression = Expression.PropertyOrField(Expression.Constant(parameter), strMember);
-                                        }
-                                        else
-                                        {
-                                            // 先找属性
-                                            PropertyInfo propertyInfo = type.GetProperty(strMember, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-                                            if (propertyInfo != null)
+                                            // 获取参数
+                                            List<Expression> listParam = ReadParams(strOperator, false);
+
+                                            if (parameter != null)
                                             {
-                                                currentExpression = Expression.Property(null, propertyInfo);
+                                                MethodInfo methodInfo = parameter.Type.GetMethod(strMember,
+                                                    listParam.ConvertAll<Type>(m => m.Type).ToArray());
+                                                currentExpression = Expression.Call(parameter, methodInfo, listParam.ToArray());
                                             }
-                                            // 没找到属性则找字段
                                             else
                                             {
-                                                FieldInfo fieldInfo = type.GetField(strMember, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-                                                if (fieldInfo == null)
+                                                MethodInfo methodInfo = type.GetMethod(strMember, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic, null,
+                                                    listParam.ConvertAll<Type>(m => m.Type).ToArray(), null);
+                                                currentExpression = Expression.Call(methodInfo, listParam.ToArray());
+                                            }
+                                        }
+                                        // 静态成员(PropertyOrField)
+                                        else
+                                        {
+                                            if (parameter != null)
+                                            {
+                                                currentExpression = Expression.PropertyOrField(Expression.Constant(parameter), strMember);
+                                            }
+                                            else
+                                            {
+                                                // 先找属性
+                                                PropertyInfo propertyInfo = type.GetProperty(strMember, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+                                                if (propertyInfo != null)
                                                 {
-                                                    throw new ParseUnknownException(strMember, _codeParser.Index);
+                                                    currentExpression = Expression.Property(null, propertyInfo);
                                                 }
-                                                currentExpression = Expression.Field(null, fieldInfo);
+                                                // 没找到属性则找字段
+                                                else
+                                                {
+                                                    FieldInfo fieldInfo = type.GetField(strMember, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+                                                    if (fieldInfo == null)
+                                                    {
+                                                        throw new ParseUnknownException(strMember, _codeParser.Index);
+                                                    }
+                                                    currentExpression = Expression.Field(null, fieldInfo);
+                                                }
                                             }
                                         }
                                     }
-
-                                    #endregion
                                 }
                             }
                             // 头Char不是字母或下划线
@@ -615,7 +676,7 @@ namespace Zhucai.LambdaParser
                                 }
                             }
                         }
-                        break; 
+                        break;
                     #endregion
                 }
             }
@@ -1167,7 +1228,7 @@ namespace Zhucai.LambdaParser
                 type = GetType(strVal);
                 if (type == null)
                 {
-                    bool result = _codeParser.ReadSymbol(".",false);
+                    bool result = _codeParser.ReadSymbol(".", false);
                     if (!result)
                     {
                         throw new ParseUnfindTypeException(strVal, _codeParser.Index);
