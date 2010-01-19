@@ -117,8 +117,8 @@ namespace Zhucai.LambdaParser
             char c = this.Content[this.Index];
 
             // 字母或下划线开头
-            #region if (char.IsLetter(c) || c == '_')
-            if (char.IsLetter(c) || c == '_')
+            #region if (char.IsLetter(c) || c == '_' || c == '$')
+            if (char.IsLetter(c) || c == '_' || c == '$')
             {
                 // 找下去
                 for (this.Length = 1; (this.Length + this.Index) < this.Content.Length; this.Length++)

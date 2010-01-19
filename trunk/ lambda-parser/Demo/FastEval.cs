@@ -7,11 +7,10 @@ using System.Linq.Expressions;
 using System.Web.UI;
 using Zhucai.LambdaParser;
 
+// 来自老赵的blog：http://www.cnblogs.com/jeffreyzhao/archive/2009/01/09/dynamicpropertyaccessor-and-fasteval.html
 namespace Demo
 {
-    // 原类来自老赵的blog：http://www.cnblogs.com/jeffreyzhao/archive/2009/01/09/dynamicpropertyaccessor-and-fasteval.html
-
-    // 老类
+    // 原类
     public class DynamicPropertyAccessor
     {
         private Func<object, object> m_getter;

@@ -22,6 +22,8 @@ namespace Zhucai.LambdaParser
         private Type _defaultInstanceType;
         private ParameterExpression _defaultInstanceParam;
 
+        private Type[] _paramTypes;
+
         private bool _firstTypeIsDefaultInstance;
 
         /// <summary>
@@ -133,11 +135,17 @@ namespace Zhucai.LambdaParser
         /// 构造Lambda表达式的解析器
         /// </summary>
         /// <param name="code">lambda表达式代码。如：m=>m.ToString()</param>
-        internal ExpressionParserCore(Type delegateType,string code,  Type defaultInstanceType, bool firstTypeIsDefaultInstance)
+        internal ExpressionParserCore(Type delegateType,string code,  Type defaultInstanceType, Type[] paramTypes, bool firstTypeIsDefaultInstance)
         {
+            if (code == null)
+            {
+                throw new ArgumentNullException("code");
+            }
+
             this._codeParser = new CodeParser(code);
             this._defaultInstanceType = defaultInstanceType;
             this._firstTypeIsDefaultInstance = firstTypeIsDefaultInstance;
+            this._paramTypes = paramTypes;
             this.Namespaces = new List<string>();
             if (delegateType != null)
             {
@@ -183,11 +191,13 @@ namespace Zhucai.LambdaParser
         public LambdaExpression ToLambdaExpression()
         {
             // 获取委托的参数类型
-            MethodInfo methodInfo = _delegateType.GetMethod("Invoke");
-            List<Type> listType = null;
-            if (methodInfo != null)
+            if (this._paramTypes == null)
             {
-                listType = methodInfo.GetParameters().ToList().ConvertAll(m => m.ParameterType);
+                MethodInfo methodInfo = _delegateType.GetMethod("Invoke");
+                if (methodInfo != null)
+                {
+                    this._paramTypes = methodInfo.GetParameters().Select(m => m.ParameterType).ToArray();
+                }
             }
 
             int paramIndexPrefix = 0;
@@ -218,7 +228,7 @@ namespace Zhucai.LambdaParser
                             string paramName;
                             if (typeName.Length == 1)
                             {
-                                paramType = listType != null ? listType[i + paramIndexPrefix] : typeof(object);
+                                paramType = this._paramTypes != null ? this._paramTypes[i + paramIndexPrefix] : typeof(object);
                                 paramName = paramsName[i];
                             }
                             else
@@ -242,7 +252,7 @@ namespace Zhucai.LambdaParser
                 if (lambdaOperator == "=>")
                 {
                     hasLambdaPre = true;
-                    this._params.Add(Expression.Parameter(listType != null ? listType[0 + paramIndexPrefix] : typeof(object), val));
+                    this._params.Add(Expression.Parameter(this._paramTypes != null ? this._paramTypes[0 + paramIndexPrefix] : typeof(object), val));
                 }
             }
 
@@ -550,7 +560,7 @@ namespace Zhucai.LambdaParser
                     default:
                         {
                             // 头Char是字母或下划线
-                            if (char.IsLetter(firstChar) || firstChar == '_')
+                            if (char.IsLetter(firstChar) || firstChar == '_' || firstChar == '$')
                             {
                                 // 默认实例的方法调用
                                 if (_defaultInstanceType != null && _codeParser.PeekString() == "(")
@@ -1102,10 +1112,11 @@ namespace Zhucai.LambdaParser
             while (!newIsClosedWrap)
             {
                 Expression expression = ReadExpression(0, startSymbol, out newIsClosedWrap);
-                if (expression != null)
+                if (expression == null)
                 {
-                    listParam.Add(expression);
+                    break;
                 }
+                listParam.Add(expression);
             }
             return listParam;
         }

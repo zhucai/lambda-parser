@@ -15,12 +15,13 @@ namespace Demo
         {
             InitializeComponent();
 
+            // test GeneralEventHandling
             GeneralEventHandling.NewAttachGeneralHandler(this, this.GetType().GetEvent("MouseClick"));
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            // test DynamicQuery
+            string[] arr = { "ABC", "ADE", "BCD", "DEF" };
+            var query = arr.AsQueryable().Where("StartsWith(\"A\")");
+            MessageBox.Show(query.Count().ToString());
         }
     }
 }
