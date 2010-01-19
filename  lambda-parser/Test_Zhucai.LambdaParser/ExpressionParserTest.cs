@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Zhucai.LambdaParser.ObjectDynamicExtension;
 
 namespace Test_Zhucai.LambdaParser
 {
@@ -161,7 +162,7 @@ namespace Test_Zhucai.LambdaParser
             }
             {
                 string code = "()=>new List<string>(){ \"abc\",\"def\" }[1]";
-                var expected = new List<string>(){ "abc","def" }[1];
+                var expected = new List<string>() { "abc", "def" }[1];
 
                 var actual = ExpressionParser.Compile(code, "System", "System.Collections.Generic").DynamicInvoke();
                 Assert.AreEqual(expected, actual);
@@ -705,6 +706,73 @@ namespace Test_Zhucai.LambdaParser
             Func<int> func = ExpressionParser.Compile<Func<int>>(code, typeof(TestClass).Namespace);
             int actual = func();
             Assert.AreEqual(0, actual);
+        }
+        /// <summary>
+        /// 测试默认实例
+        /// </summary>
+        [TestMethod]
+        public void ParseDelegateTest_DefaultInstance()
+        {
+            {
+                string code = "Member1*2";
+                Func<TestClass, int> func = ExpressionParser.Compile<Func<TestClass, int>>(code, true);
+                int actual = func(new TestClass(13, 13));
+                Assert.AreEqual(13 * 2, actual);
+            }
+            {
+                string code = "Member1 == 13";
+                Delegate func = ExpressionParser.Compile(code, typeof(TestClass));
+                var actual = func.DynamicInvoke(new TestClass(13, 13));
+                Assert.AreEqual(true, actual);
+            }
+            {
+                string code = "m=>Member1*m.Member2";
+                Func<TestClass, TestClass, int> func = ExpressionParser.Compile<Func<TestClass, TestClass, int>>(code, true);
+                int actual = func(new TestClass(13, 13), new TestClass(23, 23));
+                Assert.AreEqual(13 * 23, actual);
+            }
+        }
+        /// <summary>
+        /// 测试Exec方法
+        /// </summary>
+        [TestMethod]
+        public void ParseDelegateTest_DefaultExec()
+        {
+            object obj = new { Name = "zhangsan", Id = 18 };
+            {
+                object actual = obj.E("Id");
+
+                Assert.AreEqual(18, actual);
+            }
+            {
+                int actual = obj.E<int>("Id");
+
+                Assert.AreEqual(18, actual);
+            }
+            {
+                string actual = obj.E<string>("Name + Id");
+
+                Assert.AreEqual("zhangsan18", actual);
+            }
+            {
+                object obj2 = new { Name = "李四", Id = 18 };
+                object obj3 = new { Name = "王五", Id = 18 };
+                string actual = obj.E<string>("$0.Name + $1.Name + $2.Name", obj2, obj3);
+
+                Assert.AreEqual("zhangsan李四王五", actual);
+            }
+            {
+                object obj2 = new { Name = "李四", Id = 18 };
+                string actual = obj.E<string>("Name + $1.Name", obj2);
+
+                Assert.AreEqual("zhangsan李四", actual);
+            }
+            {
+                object obj2 = new TestClass(2, 3);
+                int actual = obj2.E<int>("GetMemberAll()");
+
+                Assert.AreEqual(5, actual);
+            }
         }
 
         /// <summary>

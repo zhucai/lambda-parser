@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Linq.Expressions;
 using Zhucai.LambdaParser;
 
+// 来自装配脑袋的blog：http://www.cnblogs.com/Ninputer/archive/2009/09/08/expression_tree3.html
 namespace Demo
 {
-    // 原类来自装配脑袋的blog：http://www.cnblogs.com/Ninputer/archive/2009/09/08/expression_tree3.html
 
     public static class GeneralEventHandling
     {
@@ -19,7 +19,7 @@ namespace Demo
             return null;
         }
 
-        // 老函数
+        // 原函数
         public static void AttachGeneralHandler(object target, EventInfo targetEvent)
         {
             //获得事件响应程序的委托类型
@@ -85,7 +85,7 @@ namespace Demo
                 invokeMethod.ReturnType.Equals(typeof(void))?"":"("+invokeMethod.ReturnType.FullName+")",
                 string.Join(",", parameters.Select(m => m.Name).ToArray()));
 
-            Delegate dynamiceDelegate = ExpressionParser.Compile(lambdaCode, delegateType, "Demo"); // 最后一个参数Demo是命名空间
+            Delegate dynamiceDelegate = ExpressionParser.Compile(delegateType, lambdaCode, "Demo"); // 最后一个参数Demo是命名空间
 
             //完成!
             targetEvent.AddEventHandler(target, dynamiceDelegate);

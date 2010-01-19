@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicQuery.cs" />
     <Compile Include="FastEval.cs" />
     <Compile Include="FastEvalExtension.cs" />
     <Compile Include="Form1.cs">
