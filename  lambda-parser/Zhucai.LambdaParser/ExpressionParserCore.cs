@@ -1262,70 +1262,109 @@ namespace Zhucai.LambdaParser
                 return null;
             }
 
+            // Nullable
+            bool isNullable = false;
+            if (typeName.EndsWith("?"))
+            {
+                isNullable = true;
+                typeName = typeName.Substring(0, typeName.Length - 1);
+            }
+            else if(_codeParser.PeekString() == "?")
+            {
+                isNullable = true;
+                _codeParser.ReadString();
+            }
+
+            Type type;
+
             switch (typeName)
             {
                 case "bool":
-                    return typeof(bool);
+                    type = typeof(bool);
+                    break;
 
                 case "byte":
-                    return typeof(byte);
+                    type = typeof(byte);
+                    break;
 
                 case "sbyte":
-                    return typeof(sbyte);
+                    type = typeof(sbyte);
+                    break;
 
                 case "char":
-                    return typeof(char);
+                    type = typeof(char);
+                    break;
 
                 case "decimal":
-                    return typeof(decimal);
+                    type = typeof(decimal);
+                    break;
 
                 case "double":
-                    return typeof(double);
+                    type = typeof(double);
+                    break;
 
                 case "float":
-                    return typeof(float);
+                    type = typeof(float);
+                    break;
 
                 case "int":
-                    return typeof(int);
+                    type = typeof(int);
+                    break;
 
                 case "uint":
-                    return typeof(uint);
+                    type = typeof(uint);
+                    break;
 
                 case "long":
-                    return typeof(long);
+                    type = typeof(long);
+                    break;
 
                 case "ulong":
-                    return typeof(ulong);
+                    type = typeof(ulong);
+                    break;
 
                 case "object":
-                    return typeof(object);
+                    type = typeof(object);
+                    break;
 
                 case "short":
-                    return typeof(short);
+                    type = typeof(short);
+                    break;
 
                 case "ushort":
-                    return typeof(ushort);
+                    type = typeof(ushort);
+                    break;
 
                 case "string":
-                    return typeof(string);
+                    type = typeof(string);
+                    break;
+
+                default:
+                    {
+                        // 先当typeName是类的全名
+                        type = GetTypeCore(typeName);
+
+                        // 没有找到则用所有的命名空间去一次次匹配
+                        if (type == null)
+                        {
+                            foreach (string theNamespace in this.Namespaces)
+                            {
+                                type = GetTypeCore(theNamespace + "." + typeName);
+
+                                // 找到即停，不继续找（如果两个命名空间下有两个同名类，则这里永远是返回第一个，而不是报错）
+                                if (type != null)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    break;
             }
 
-            // 先当typeName是类的全名
-            Type type = GetTypeCore(typeName);
-
-            // 没有找到则用所有的命名空间去一次次匹配
-            if (type == null)
+            if (isNullable && type != null)
             {
-                foreach (string theNamespace in this.Namespaces)
-                {
-                    type = GetTypeCore(theNamespace + "." + typeName);
-
-                    // 找到即停，不继续找（如果两个命名空间下有两个同名类，则这里永远是返回第一个，而不是报错）
-                    if (type != null)
-                    {
-                        return type;
-                    }
-                }
+                type = typeof(Nullable<>).MakeGenericType(type);
             }
 
             return type;
