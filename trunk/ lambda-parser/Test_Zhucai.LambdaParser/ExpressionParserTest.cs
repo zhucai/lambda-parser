@@ -70,10 +70,11 @@ namespace Test_Zhucai.LambdaParser
                 Assert.AreEqual(expected, "2002");
             }
             {
-                var expected = ExpressionParser.Compile("(int m)=>-m").DynamicInvoke(10);
-
                 int m = 10;
-                var actual = -m;
+                var expected = -m;
+
+                Delegate dele = ExpressionParser.Compile("(int m)=>-m");
+                var actual = dele.DynamicInvoke(10);
 
                 Assert.AreEqual(expected, actual);
             }
@@ -166,6 +167,37 @@ namespace Test_Zhucai.LambdaParser
 
                 var actual = ExpressionParser.Compile(code, "System", "System.Collections.Generic").DynamicInvoke();
                 Assert.AreEqual(expected, actual);
+            }
+        }
+        /// <summary>
+        /// 测试Nullable
+        /// </summary>
+        [TestMethod]
+        public void ParseDelegateTest_Nullable()
+        {
+            {
+                Delegate dele = ExpressionParser.Compile("(int? m)=>m==null");
+                var actual = dele.DynamicInvoke((int?)null);
+
+                Assert.AreEqual(true, actual);
+            }
+            {
+                Delegate dele = ExpressionParser.Compile("(int?)null");
+                var actual = dele.DynamicInvoke();
+
+                Assert.AreEqual(null, null);
+            }
+            {
+                Delegate dele = ExpressionParser.Compile("new System.Nullable<int>(10).Value - 3");
+                Nullable<int> actual = (Nullable<int>)dele.DynamicInvoke();
+
+                Assert.AreEqual(7, actual);
+            }
+            {
+                Delegate dele = ExpressionParser.Compile("new long?(10L).Value - 3");
+                long? actual = (long?)dele.DynamicInvoke();
+
+                Assert.AreEqual(7, actual);
             }
         }
         /// <summary>
