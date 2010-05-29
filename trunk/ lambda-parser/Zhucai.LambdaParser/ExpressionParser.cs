@@ -89,7 +89,6 @@ namespace Zhucai.LambdaParser
 
         #endregion
 
-
         #region all Compile()
 
         /// <summary>
@@ -203,7 +202,6 @@ namespace Zhucai.LambdaParser
         }
 
         #endregion
-
 
         #region private method.内部方法
 
