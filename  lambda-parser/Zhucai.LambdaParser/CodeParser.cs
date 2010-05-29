@@ -9,9 +9,19 @@ namespace Zhucai.LambdaParser
     /// </summary>
     public class CodeParser
     {
+        /// <summary>
+        /// 当前读取的索引位置
+        /// </summary>
         public int Index { get; private set; }
+
+        /// <summary>
+        /// 当前读取的字符长度
+        /// </summary>
         public int Length { get; private set; }
 
+        /// <summary>
+        /// 整个传入的代码内容
+        /// </summary>
         public string Content { get; private set; }
 
         /// <summary>
@@ -23,7 +33,6 @@ namespace Zhucai.LambdaParser
         {
             this.Content = content;
         }
-
 
         /// <summary>
         /// 往下读取字符串。(此方法是Read()方法的封装)
@@ -37,6 +46,7 @@ namespace Zhucai.LambdaParser
         /// <summary>
         /// 往下读取字符串。(此方法是Read()方法的封装)
         /// </summary>
+        /// <param name="isIgnoreWhiteSpace">是否忽略空格</param>
         /// <returns></returns>
         public string ReadString(bool isIgnoreWhiteSpace)
         {
@@ -47,16 +57,30 @@ namespace Zhucai.LambdaParser
             return null;
         }
 
+        /// <summary>
+        /// 读取接下来的符号
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
         public bool ReadSymbol(string symbol)
         {
             return ReadSymbol(symbol, true);
         }
+
+        /// <summary>
+        /// 读取接下来的符号
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="throwExceptionIfError"></param>
+        /// <returns></returns>
         public bool ReadSymbol(string symbol, bool throwExceptionIfError)
         {
+            // 跳过空格
             while (char.IsWhiteSpace(this.Content[this.Index+this.Length]))
             {
                 this.Length++;
             }
+
             if (throwExceptionIfError)
             {
                 ParseException.Assert(this.Content.Substring(this.Index + this.Length, symbol.Length), symbol, this.Index);
@@ -87,13 +111,13 @@ namespace Zhucai.LambdaParser
             return str;
         }
 
-
         #region private 方法
 
         /// <summary>
         /// 往下读取。通过Index和Length指示当前位置。
         /// </summary>
         /// <param name="isBuildDefineString">遇到代码中的字符串常量时是否将字符串常量解析到DefineString成员。</param>
+        /// <param name="isIgnoreWhiteSpace">是否忽略空格</param>
         /// <returns></returns>
         private bool Read(bool isBuildDefineString, bool isIgnoreWhiteSpace)
         {

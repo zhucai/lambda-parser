@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zhucai.LambdaParser.CodeParser">
+    <Position X="0.75" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Class Name="Zhucai.LambdaParser.CodeParser.MyCodeParserPosition" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CodeParser.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgCAAAAhAAAgAgBkAQAAAQAAAAEAAAAgAAA=</HashCode>
+      <FileName>CodeParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhucai.LambdaParser.ExpressionParser">
+    <Position X="6.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAQAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEA=</HashCode>
+      <FileName>ExpressionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhucai.LambdaParser.ExpressionParserCore&lt;TDelegate&gt;">
+    <Position X="3.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIQAAEAAAAAgAQABCAAgAQAAEAAAAkIAAAGABIAAgM=</HashCode>
+      <FileName>ExpressionParserCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="SimSun" Size="9" />
+</ClassDiagram>
