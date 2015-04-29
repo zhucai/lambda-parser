@@ -16,3 +16,4 @@ Example3 - access property in anonymous type:
 //using Zhucai.LambdaParser.ObjectDynamicExtension;
 object obj = new { Name = "zhangsan", Id = 18 }; // maybe get [obj] from method return value
 int result = obj.E<int>("Id"); // result = 18
+
