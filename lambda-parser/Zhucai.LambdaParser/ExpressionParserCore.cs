@@ -220,10 +220,10 @@ namespace Zhucai.LambdaParser
                         hasLambdaPre = true;
 
                         // 解析参数
-                        string[] paramsName = bracketContent.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] paramsName = bracketContent.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < paramsName.Length; i++)
                         {
-                            string[] typeName = paramsName[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] typeName = paramsName[i].Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             Type paramType;
                             string paramName;
                             if (typeName.Length == 1)
