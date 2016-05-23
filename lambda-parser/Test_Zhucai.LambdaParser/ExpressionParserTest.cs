@@ -894,6 +894,20 @@ namespace Test_Zhucai.LambdaParser
                 Assert.AreEqual(expected, actual);
             }
         }
+        
+        /// <summary>
+        /// Ensure that spaces inside parenthesis are correctly ignored.
+        /// </summary>
+        [TestMethod]
+        public void ParseDelegateTest_Spaces_In_Parenthesis()
+        {
+            {
+                var expected = ExpressionParser.Compile("(int m, int n) => m*n").DynamicInvoke(3, 8);
+                var actual = 3 * 8;
+
+                Assert.AreEqual(expected, actual);
+            }
+        }
     }
 
     public class TestClass
