@@ -1,7 +1,7 @@
 Lambda Parser
 ====
 
-This is a lib used to parse code in runtime. The program language is C#.
+This is a lib for parsing code in runtime. The program language is C#.
 
 #### Example1 - string concat and number calculate:
 ```C#
