@@ -22,4 +22,4 @@ object obj = new { Name = "zhangsan", Id = 18 }; // maybe get [obj] from method 
 int result = obj.E<int>("Id"); // result = 18
 ```
 
-You can view test code to explore more functions:  https://github.com/zhucai/%20lambda-parser/blob/master/lambda-parser/Test_Zhucai.LambdaParser/ExpressionParserTest.cs
+You can view test code to explore more functions:  https://github.com/zhucai/lambda-parser/blob/master/%20lambda-parser/Test_Zhucai.LambdaParser/ExpressionParserTest.cs
