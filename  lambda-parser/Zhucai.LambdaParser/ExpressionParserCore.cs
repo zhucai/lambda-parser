@@ -223,7 +223,6 @@ namespace Zhucai.LambdaParser
                         string[] paramsName = bracketContent.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < paramsName.Length; i++)
                         {
-                            paramsName[i] = paramsName[i].Trim();
                             string[] typeName = paramsName[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             Type paramType;
                             string paramName;
